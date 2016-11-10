@@ -1,0 +1,18 @@
+CURL COMMANDS (validation pt. 2):
+Get state of and item:
+    curl http://192.168.1.144:8080/rest/items/RaspiLED/state
+        - ip address subject to change
+        - items: hover over switch to get the name of the item
+        - Need to initialize item before getting their status
+
+Change state of item:
+    curl --header "Content-Type: text/plain" --request POST --data "ON" http://192.168.1.144:8080/rest/items/RaspiLED
+        - PUT is faster than POST
+        - Need POST for GPIO
+
+
+CLIENT.PY COMMANDS (validation pt4):
+python3 client.py -r POST -i RaspiLED -ip 192.168.1.144 -p 8080 -d ON
+python3 client.py -r GET -i RaspiLED -ip 192.168.1.144 -p 8080
+python3 client.py -r PUT -i Light_FF_Bath_Ceiling -ip 192.168.1.144 -p 8080 -d OFF
+python3 client.py -r GET -i Light_FF_Bath_Ceiling -ip 192.168.1.144 -p 8080
